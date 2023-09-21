@@ -11,6 +11,9 @@ interface props {
 const PageOne = ({ users, setSelectedPerson }: props): JSX.Element => (
 	// shows table and passes users/setter for selected person
 	<Container>
+		<Box>hi</Box>
+		<box>hi</box>
+		test
 		<DbTable users={users} setSelectedPerson={setSelectedPerson} />
 	</Container>
 );
