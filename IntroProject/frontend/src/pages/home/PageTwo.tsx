@@ -1,3 +1,4 @@
+import React from 'react';
 import UserTable from 'components/UserTable';
 import { person } from 'utils/Interfaces';
 

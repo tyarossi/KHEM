@@ -1,4 +1,6 @@
+/* eslint-disable react/no-deprecated */
 import ReactDOM from 'react-dom';
+import React from 'react';
 import { ThemeProvider, CssBaseline } from '@mui/material';
 import { BrowserRouter } from 'react-router-dom';
 import App from './App';

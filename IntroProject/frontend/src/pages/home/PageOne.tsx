@@ -1,3 +1,4 @@
+import React from 'react';
 import DbTable from 'components/dbTable';
 import { person } from 'utils/Interfaces';
 import { Container } from '@mui/material';
@@ -11,8 +12,6 @@ interface props {
 const PageOne = ({ users, setSelectedPerson }: props): JSX.Element => (
 	// shows table and passes users/setter for selected person
 	<Container>
-		<Box>hi</Box>
-		<box>hi</box>
 		test
 		<DbTable users={users} setSelectedPerson={setSelectedPerson} />
 	</Container>

@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import React from 'react';
 import {
 	Box,
 	Table,
@@ -158,7 +159,6 @@ const DbTable = ({ users, setSelectedPerson }: props) => {
 				</Box>
 			</div>
 			<Box>
-				<Outlet />
 			</Box>
 		</Box>
 	);

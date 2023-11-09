@@ -1,4 +1,4 @@
-/* eslint-disable import/no-extraneous-dependencies */
+
 import 'whatwg-fetch';
 import { rest } from 'msw';
 import { setupServer } from 'msw/node';
