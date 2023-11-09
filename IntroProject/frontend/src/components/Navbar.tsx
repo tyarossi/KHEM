@@ -4,6 +4,7 @@ import { Outlet, useNavigate } from 'react-router-dom';
 
 // Navbar
 const Navbar = (): JSX.Element => {
+	
 	// Navigate is used to swap pages and then I make the pages into functions to be used with onClick
 	const navigate = useNavigate();
 	const homePage = () => {
@@ -37,16 +38,14 @@ const Navbar = (): JSX.Element => {
 					<Tabs value={value} onChange={handleChange}>
 						{/* Swaps to home page */}
 						<Tab onClick={homePage} value='one' label='Home' />
-						{/* Swaps to user info page */}
-						<Tab onClick={PageOne} value='two' label='Users' />
 						{/* Swaps to About page */}
-						<Tab onClick={About} value='three' label='About' />
+						<Tab onClick={About} value='two' label='About' />
 						{/* Swaps to Contact page */}
-						<Tab onClick={Contact} value='four' label='Contact' />
+						<Tab onClick={Contact} value='three' label='Contact' />
 						{/* Swaps to Profile page */}
-						<Tab onClick={Profile} value='five' label='Profile' />
+						<Tab onClick={Profile} value='four' label='Profile' />
 						{/* Swaps to Modules page */}
-						<Tab onClick={Modules} value='six' label='Modules' />
+						<Tab onClick={Modules} value='five' label='Modules' />
 					</Tabs>
 				</Toolbar>
 			</AppBar>

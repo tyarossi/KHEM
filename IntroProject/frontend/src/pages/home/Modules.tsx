@@ -4,6 +4,7 @@ import { Box, Button, Container, FormControl, FormControlLabel, FormLabel, Radio
 const Modules = (): JSX.Element => (
 	<Container>
         <Box
+            marginTop='30px'
             sx={{
                 display: 'flex',
                 justifyContent: 'center',

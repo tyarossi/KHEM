@@ -223,7 +223,7 @@ const UserTable = ({
 				</Box>
 			</div>
 			<Box>
-				<Outlet />
+				{/* <Outlet /> */}
 			</Box>
 		</Box>
 	);

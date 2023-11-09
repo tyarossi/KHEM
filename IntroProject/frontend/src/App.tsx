@@ -11,6 +11,7 @@ import About from 'pages/home/About';
 import Contact from 'pages/home/Contact';
 import Profile from 'pages/home/Profile';
 import Home from 'pages/home/Home';
+import { Box, Button, FormControlLabel, FormGroup, Switch } from '@mui/material';
 
 const App = () => {
 	const [people, setPeople] = useState<person[]>([]);
@@ -23,6 +24,12 @@ const App = () => {
 	});
 	const [reloadPage, setReloadPage] = useState<boolean>(true);
 
+	const [logIn, setLogIn] = useState<boolean>(false);
+
+    const handleSignIn = () => {
+		setLogIn(!logIn);
+	};
+
 	useEffect(() => {
 		getDemo().then((response) => {
 			if (response.message === 'success') {
@@ -33,11 +40,21 @@ const App = () => {
 
 	return (
 		<>
+			<Box flexDirection='row' display='flex'>
+				<FormGroup sx={{ marginRight: 'auto' }} >
+					<FormControlLabel control={<Switch onChange={handleSignIn} defaultChecked />} label="Logged In?" />
+				</FormGroup>
+				{logIn ?
+					<Button variant='text' sx={{  marginLeft: 'auto' }} >Log In</Button>
+					:
+					null
+				}
+			</Box>
 			<Routes>
 				{/* makes sure navbar is on top of every page */}
 				<Route path='' element={<Navbar />}>
-					<Route path='/Home' element={<Home />} />
-					<Route path='/Users'>
+					<Route path='/Home' element={<Home logIn={logIn} />} />
+					{/* <Route path='/Users'>
 						<Route
 							path=''
 							// Displays every user on datatable for routed page as well as sends users and setter for selected person
@@ -69,7 +86,7 @@ const App = () => {
 								/>
 							}
 						/>
-					</Route>
+					</Route> */}
 					<Route path='/About'>
 						<Route path='' element={ <About /> } ></Route>
 					</Route>
@@ -77,7 +94,7 @@ const App = () => {
 						<Route path='' element={ <Contact /> } ></Route>
 					</Route>
 					<Route path='/Profile'>
-						<Route path='' element={ <Profile /> } ></Route>
+						<Route path='' element={ <Profile logIn={logIn} /> } ></Route>
 					</Route>
 					<Route path='/Modules'>
 						<Route path='' element={ <Modules /> } ></Route>

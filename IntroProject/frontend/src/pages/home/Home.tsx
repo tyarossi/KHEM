@@ -2,9 +2,12 @@ import React from 'react';
 import { Container } from '@mui/material';
 import SignIn from 'components/SignIn';
 
-const About = (): JSX.Element => (
+interface props {
+    logIn: boolean;
+}
+const About = ({logIn}: props): JSX.Element => (
 	<Container>
-        <SignIn />
+        <SignIn logIn={logIn} />
 	</Container>
 );
 export default About;
