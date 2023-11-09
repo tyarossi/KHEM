@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box, TextField, Typography } from '@mui/material';
+import { Box, Button, TextField, Typography } from '@mui/material';
 
 const SignIn = () => {
     return (
@@ -14,15 +14,14 @@ const SignIn = () => {
                 <Typography variant='h5' >Username or Email:</Typography>
                 <TextField
                     style={{maxWidth: '400px'}}
-                >
-                    s
-                </TextField>
-                <Typography variant='h5' >Password:</Typography>
+                />
+                <Typography variant='h5' >Passssword:</Typography>
                 <TextField
                     style={{maxWidth: '400px'}}
-                >
-                    s
-                </TextField>
+                />
+                <Typography>
+                    Don't have an account? {<Button variant='text'>Register</Button>}.
+                </Typography>
         </Box>
     );
 };
