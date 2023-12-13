@@ -1,9 +1,12 @@
-import { Box, AppBar, Toolbar, Tabs, Tab } from '@mui/material';
+import { Box, AppBar, Toolbar, Tabs, Tab, Button } from '@mui/material';
 import React from 'react';
 import { Outlet, useNavigate } from 'react-router-dom';
-
+interface props {
+	logIn: boolean;
+	setLogIn(value: boolean): void;
+}
 // Navbar
-const Navbar = (): JSX.Element => {
+const Navbar = ({ logIn, setLogIn }: props): JSX.Element => {
 	
 	// Navigate is used to swap pages and then I make the pages into functions to be used with onClick
 	const navigate = useNavigate();
@@ -25,11 +28,24 @@ const Navbar = (): JSX.Element => {
 	const Modules = () => {
 		navigate('/Modules');
 	};
+	const LoginPage= () => {
+		navigate('/LoginPage')
+	}
 	
 	const [value, setValue] = React.useState('one');
 	const handleChange = (event: React.SyntheticEvent, newValue: string) => {
 		setValue(newValue);
 	};
+
+	const handleClick = () => {
+		{logIn?
+			(setLogIn(false),
+			navigate('LoginPage'))
+		:
+			(setLogIn(true),
+			navigate('LoginPage'))
+		}
+	}
 	return (
 		// navbar display element
 		<Box display='flex' flexDirection='column'>
@@ -43,10 +59,18 @@ const Navbar = (): JSX.Element => {
 						{/* Swaps to Contact page */}
 						<Tab onClick={Contact} value='three' label='Contact' />
 						{/* Swaps to Profile page */}
+						{logIn?
 						<Tab onClick={Profile} value='four' label='Profile' />
+						:
+						null
+						}
 						{/* Swaps to Modules page */}
 						<Tab onClick={Modules} value='five' label='Modules' />
 					</Tabs>
+					<Box marginLeft='auto'>
+					<Button variant='text'
+					onClick={handleClick} sx={{  marginLeft: 'auto', color: 'white' }} >{logIn? 'Log Out' : 'Log In' }</Button>
+			</Box>
 				</Toolbar>
 			</AppBar>
 				<Outlet />

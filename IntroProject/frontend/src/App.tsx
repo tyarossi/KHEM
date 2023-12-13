@@ -1,59 +1,52 @@
 import Navbar from 'components/Navbar';
 import React from 'react';
 import { Outlet, Route, Routes } from 'react-router-dom';
-import PageOne from 'pages/home/PageOne';
 import { useEffect, useState } from 'react';
-import { person } from 'utils/Interfaces';
+import { users } from 'utils/Interfaces';
 import { getDemo } from 'actions/DemoAction';
-import PageTwo from 'pages/home/PageTwo';
 import Modules from 'pages/home/Modules';
 import About from 'pages/home/About';
 import Contact from 'pages/home/Contact';
 import Profile from 'pages/home/Profile';
-import Home from 'pages/home/Home';
-import { Box, Button, FormControlLabel, FormGroup, Switch } from '@mui/material';
+import LoginPage from 'pages/home/LoginPage';
+import Home2 from 'pages/home/Home2';
+import Equations from 'pages/home/Equations';
 
 const App = () => {
-	const [people, setPeople] = useState<person[]>([]);
-	const [selectedPerson, setSelectedPerson] = useState<person>({
+	const [users, setUsers] = useState<users[]>([]);
+	const [loggedUser, setLoggedUser] = useState<users>({
 		id: -1,
-		name: '',
-		age: -1,
-		height: -1,
-		eyeColor: '',
+		password: '',
+		name: -1,
+		email: '',
+		eqTestScore: -1,
+		kinTestScore: -1,
+		eleTestScore: -1,
+		balTestScore: -1,
 	});
 	const [reloadPage, setReloadPage] = useState<boolean>(true);
 
 	const [logIn, setLogIn] = useState<boolean>(false);
 
-    const handleSignIn = () => {
-		setLogIn(!logIn);
-	};
-
 	useEffect(() => {
 		getDemo().then((response) => {
 			if (response.message === 'success') {
-				setPeople(response.data);
+				setUsers(response.data);
 			}
 		});
 	}, [reloadPage]);
 
 	return (
 		<>
-			<Box flexDirection='row' display='flex'>
-				<FormGroup sx={{ marginRight: 'auto' }} >
-					<FormControlLabel control={<Switch onChange={handleSignIn} defaultChecked />} label="Logged In?" />
-				</FormGroup>
-				{logIn ?
-					<Button variant='text' sx={{  marginLeft: 'auto' }} >Log In</Button>
-					:
-					null
-				}
-			</Box>
 			<Routes>
 				{/* makes sure navbar is on top of every page */}
-				<Route path='' element={<Navbar />}>
-					<Route path='/Home' element={<Home logIn={logIn} />} />
+				<Route path='' element={<Navbar logIn={logIn} setLogIn={setLogIn} />}>
+					{logIn ?
+					<Route path='/Home' element={<LoginPage setLogIn={setLogIn} setLoggedUser={setLoggedUser} users={users} />} />
+					:
+					<Route path='/Home' element={<Home2 login={logIn} />} />
+					}
+					<Route path='/LoginPage' element={<LoginPage setLogIn={setLogIn} setLoggedUser={setLoggedUser} users={users} />} />
 					{/* <Route path='/Users'>
 						<Route
 							path=''
@@ -98,6 +91,9 @@ const App = () => {
 					</Route>
 					<Route path='/Modules'>
 						<Route path='' element={ <Modules /> } ></Route>
+					</Route>
+					<Route path='/Equations/:choice' >
+						<Route path='' element={ <Equations/> }></Route>
 					</Route>
 				</Route>
 			</Routes>

@@ -3,18 +3,29 @@ export type demoInterface = {
 	demoString: string;
 };
 
-export type person = {
+export type users = {
 	id: number;
-	name: string;
-	age: number;
-	height: number;
-	eyeColor: string;
+	password: string;
+	name: number;
+	email: string;
+	eqTestScore: number;
+	kinTestScore: number;
+	eleTestScore: number;
+	balTestScore: number;
 };
 
 export type UserProps = {
 	id: number;
-	name: string;
-	age: number;
-	height: number;
-	eyeColor: string;
+	password: string;
+	name: number;
+	email: string;
+	setLogin: boolean;
+	eqTestScore: number;
+	kinTestScore: number;
+	eleTestScore: number;
+	balTestScore: number;
 };
+
+export type SignIn ={
+	signIn: boolean;
+}

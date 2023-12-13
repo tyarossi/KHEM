@@ -12,34 +12,41 @@ export const getDemo = async () => {
 
 export const postDemo = async (
 	id: number,
-	name: string,
-	age: number,
-	height: number,
-	eyeColor: string,
+	password: string,
+	name: number,
+	email: string,
+	eqTestScore: number,
+	kinTestScore: number,
+	eleTestScore: number,
+	balTestScore: number,
 ) => {
 	const response = await fetch('/api/post/', {
 		method: 'POST',
 		headers: {
 			'Content-Type': 'application/json',
 		},
-		body: JSON.stringify({ id, name, age, height, eyeColor }),
+		body: JSON.stringify({ id, password, name, email, eqTestScore, kinTestScore, eleTestScore, balTestScore }),
 	});
 	return response.json();
 };
 
 export const updateDemo = async (
 	id: number,
-	name: string,
-	age: number,
-	height: number,
-	eyeColor: string,
+	password: string,
+	name: number,
+	email: string,
+	eqTestScore: number,
+	kinTestScore: number,
+	eleTestScore: number,
+	balTestScore: number,
+	
 ) => {
 	const response = await fetch('/api/update/', {
 		method: 'POST',
 		headers: {
 			'Content-Type': 'application/json',
 		},
-		body: JSON.stringify({ id, name, age, height, eyeColor }),
+		body: JSON.stringify({ id, password, name, email, eqTestScore, kinTestScore, eleTestScore, balTestScore }),
 	});
 	return response.json();
 };
